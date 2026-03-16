@@ -2,24 +2,40 @@ import { Link } from "react-router-dom";
 import { Puzzle, Grid3x3, Swords, ArrowRight } from "lucide-react";
 import CardSwap, { Card } from "../components/CardSwap";
 
+const P = ({ children }) => (
+  <span style={{ color: "#a78bfa" }}>{children}</span>
+);
+
 const GAMES = [
   {
     title: "Maze Solver",
-    desc: "Watch BFS, DFS, or A* navigate a maze in real time.",
+    desc: (
+      <span>
+        Watch <P>BFS, DFS, or A*</P> navigate a maze in <P>real time</P>.
+      </span>
+    ),
     path: "/maze",
     Icon: Puzzle,
     tag: "Pathfinding",
   },
   {
     title: "8-Puzzle",
-    desc: "AI solves the classic sliding tile puzzle using A*.",
+    desc: (
+      <span>
+        AI solves the classic sliding tile puzzle using <P>A* search</P>.
+      </span>
+    ),
     path: "/puzzle",
     Icon: Grid3x3,
     tag: "Heuristic Search",
   },
   {
     title: "Rock Paper Scissors",
-    desc: "Play against an AI opponent and see who wins.",
+    desc: (
+      <span>
+        Play against an <P>AI opponent</P> and see <P>who wins</P>.
+      </span>
+    ),
     path: "/rps",
     Icon: Swords,
     tag: "Game AI",
@@ -81,12 +97,29 @@ export default function Home() {
               lineHeight: 1.1,
               color: "#fff",
               margin: 0,
+              display: "flex",
+              alignItems: "center",
+              gap: "16px",
             }}
           >
-            AI Games
-            <br />
-            <span style={{ color: "#a78bfa" }}>Platform</span>
+            <img
+              src="/logo.svg"
+              alt="Algora"
+              style={{ width: "56px", height: "56px" }}
+            />
+            Algora
           </h1>
+          <h2
+            style={{
+              fontSize: "36px",
+              fontWeight: 700,
+              lineHeight: 1.1,
+              color: "#fff",
+              margin: 0,
+            }}
+          >
+            AI Games <span style={{ color: "#a78bfa" }}>Platform</span>
+          </h2>
           <p
             style={{
               fontSize: "15px",
@@ -221,16 +254,17 @@ export default function Home() {
                       >
                         <Icon size={18} color="#a78bfa" />
                       </div>
-                      <h3
+                      <h2
                         style={{
                           color: "#fff",
-                          fontWeight: 600,
-                          fontSize: "17px",
+                          fontWeight: 800,
+                          fontSize: "28px",
                           margin: 0,
+                          letterSpacing: "-0.5px",
                         }}
                       >
                         {title}
-                      </h3>
+                      </h2>
                     </div>
                     <span
                       style={{
@@ -249,9 +283,10 @@ export default function Home() {
                   </div>
                   <p
                     style={{
-                      color: "#9ca3af",
-                      fontSize: "14px",
-                      lineHeight: 1.6,
+                      color: "#e5e7eb",
+                      fontSize: "22px",
+                      fontWeight: 700,
+                      lineHeight: 1.5,
                       margin: 0,
                     }}
                   >
