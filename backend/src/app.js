@@ -9,6 +9,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/health", (req, res) => res.json({ status: "ok" }));
+app.head("/health", (req, res) => res.sendStatus(200));
+
 app.use("/api/games", gameRoutes);
 app.use("/api/ai", aiRoutes);
 
