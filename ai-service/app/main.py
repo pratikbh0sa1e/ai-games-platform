@@ -10,3 +10,7 @@ app.include_router(rps_router.router)
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+@app.head("/health")
+def health_head():
+    return
