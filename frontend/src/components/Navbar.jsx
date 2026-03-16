@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Cpu, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { to: "/", label: "Home" },
@@ -60,16 +60,18 @@ export default function Navbar() {
             >
               <div
                 style={{
-                  width: "26px",
-                  height: "26px",
-                  borderRadius: "8px",
-                  background: "rgba(124,58,237,0.3)",
+                  width: "28px",
+                  height: "28px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <Cpu size={14} color="#a78bfa" />
+                <img
+                  src="/logo.svg"
+                  alt="Algora"
+                  style={{ width: "28px", height: "28px" }}
+                />
               </div>
               <span
                 style={{
@@ -79,7 +81,7 @@ export default function Navbar() {
                   letterSpacing: "-0.01em",
                 }}
               >
-                AI Games
+                Algora
               </span>
             </Link>
 
@@ -155,19 +157,21 @@ export default function Navbar() {
           >
             <div
               style={{
-                width: "28px",
-                height: "28px",
-                borderRadius: "8px",
-                background: "rgba(124,58,237,0.3)",
+                width: "30px",
+                height: "30px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
               }}
             >
-              <Cpu size={15} color="#a78bfa" />
+              <img
+                src="/logo.svg"
+                alt="Algora"
+                style={{ width: "30px", height: "30px" }}
+              />
             </div>
             <span style={{ fontSize: "15px", fontWeight: 700, color: "#fff" }}>
-              AI Games
+              Algora
             </span>
           </Link>
           <button
