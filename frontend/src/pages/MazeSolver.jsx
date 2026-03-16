@@ -4,8 +4,8 @@ import ControlPanel from "../components/ControlPanel";
 import useGameState from "../hooks/useGameState";
 import { solveMaze } from "../services/aiService";
 
-const ROWS = 10;
-const COLS = 10;
+const ROWS = 10,
+  COLS = 10;
 
 function createEmptyGrid() {
   return Array.from({ length: ROWS }, () => Array(COLS).fill("empty"));
@@ -46,44 +46,42 @@ export default function MazeSolver() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-950 text-white px-6 pb-16 pt-10 flex flex-col items-center">
-      <div className="pointer-events-none fixed inset-0 overflow-hidden -z-10">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-purple-700/15 rounded-full blur-3xl" />
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-10">
+      <div className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col items-center gap-6 backdrop-blur-sm shadow-2xl">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-white mb-1">Maze Solver</h1>
+          <p className="text-gray-400 text-sm">
+            Select an algorithm and watch it solve
+          </p>
+        </div>
+
+        {/* Algorithm pill toggle */}
+        <div className="flex gap-1 bg-white/5 border border-white/10 rounded-full p-1">
+          {["bfs", "dfs", "astar"].map((algo) => (
+            <button
+              key={algo}
+              onClick={() => setAlgorithm(algo)}
+              className={`px-5 py-1.5 rounded-full text-sm font-medium transition-all
+                ${algorithm === algo ? "bg-purple-600 text-white shadow-md" : "text-gray-400 hover:text-white"}`}
+            >
+              {algo === "astar" ? "A*" : algo.toUpperCase()}
+            </button>
+          ))}
+        </div>
+
+        <Board grid={state.grid} renderCell={renderCell} />
+
+        <ControlPanel
+          actions={[
+            {
+              label: state.loading ? "Solving..." : "Solve",
+              onClick: handleSolve,
+              disabled: state.loading,
+            },
+            { label: "Reset", onClick: handleReset },
+          ]}
+        />
       </div>
-
-      <h1 className="text-4xl font-bold mt-10 mb-2">Maze Solver</h1>
-      <p className="text-gray-400 text-sm mb-8">
-        Select an algorithm and solve the maze
-      </p>
-
-      <div className="flex gap-2 mb-8 bg-white/5 border border-white/10 rounded-full p-1">
-        {["bfs", "dfs", "astar"].map((algo) => (
-          <button
-            key={algo}
-            onClick={() => setAlgorithm(algo)}
-            className={`px-5 py-1.5 rounded-full text-sm font-medium transition-all
-              ${
-                algorithm === algo
-                  ? "bg-purple-600 text-white shadow-md"
-                  : "text-gray-400 hover:text-white"
-              }`}
-          >
-            {algo === "astar" ? "A*" : algo.toUpperCase()}
-          </button>
-        ))}
-      </div>
-
-      <Board grid={state.grid} renderCell={renderCell} />
-      <ControlPanel
-        actions={[
-          {
-            label: state.loading ? "Solving..." : "Solve",
-            onClick: handleSolve,
-            disabled: state.loading,
-          },
-          { label: "Reset", onClick: handleReset },
-        ]}
-      />
-    </main>
+    </div>
   );
 }

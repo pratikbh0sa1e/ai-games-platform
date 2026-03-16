@@ -1,6 +1,6 @@
 export default function ControlPanel({ actions = [] }) {
   return (
-    <div className="flex gap-3 mt-6">
+    <div className="flex gap-3">
       {actions.map(({ label, onClick, disabled }, i) => (
         <button
           key={label}

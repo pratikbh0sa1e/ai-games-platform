@@ -12,10 +12,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transform-style: preserve-3d;
   will-change: transform;
   backface-visibility: hidden;
@@ -27,7 +28,6 @@
     transform: scale(0.75) translate(25%, 25%);
   }
 }
-
 @media (max-width: 480px) {
   .card-swap-container {
     transform: scale(0.55) translate(25%, 25%);
