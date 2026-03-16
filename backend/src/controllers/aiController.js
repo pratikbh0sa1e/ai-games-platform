@@ -18,6 +18,15 @@ export async function puzzle(req, res, next) {
   }
 }
 
+export async function puzzleShuffle(req, res, next) {
+  try {
+    const result = await aiService.shufflePuzzle();
+    res.json(result);
+  } catch (err) {
+    next(err);
+  }
+}
+
 export async function rps(req, res, next) {
   try {
     const result = await aiService.playRPS(req.body);

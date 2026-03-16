@@ -16,7 +16,11 @@ class PuzzleRequest(BaseModel):
 
 class PuzzleResponse(BaseModel):
     moves: List[str]
+    states: List[List[List[int]]]
     steps: int
+
+class PuzzleShuffleResponse(BaseModel):
+    board: List[List[int]]
 
 class RPSRequest(BaseModel):
     choice: str                    # rock | paper | scissors

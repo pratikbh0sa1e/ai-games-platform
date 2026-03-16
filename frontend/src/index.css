@@ -17,3 +17,21 @@ body,
   color: white;
   font-family: system-ui, sans-serif;
 }
+
+/* Navbar responsive visibility */
+@media (min-width: 640px) {
+  .desktop-nav {
+    display: flex !important;
+  }
+  .mobile-nav {
+    display: none !important;
+  }
+}
+@media (max-width: 639px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-nav {
+    display: block !important;
+  }
+}

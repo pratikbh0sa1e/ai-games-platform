@@ -1,10 +1,20 @@
 export default function Board({ grid, renderCell }) {
   return (
-    <div className="inline-flex flex-col gap-1 bg-white/5 border border-white/10 p-3 rounded-3xl">
+    <div
+      style={{
+        display: "inline-flex",
+        flexDirection: "column",
+        gap: "4px",
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        borderRadius: "20px",
+        padding: "12px",
+      }}
+    >
       {grid.map((row, r) => (
-        <div key={r} className="flex gap-1">
+        <div key={r} style={{ display: "flex", gap: "4px" }}>
           {row.map((cell, c) => (
-            <div key={c} className="w-8 h-8 flex items-center justify-center">
+            <div key={c} style={{ width: "32px", height: "32px" }}>
               {renderCell(cell, r, c)}
             </div>
           ))}

@@ -1,114 +1,279 @@
 import { Link } from "react-router-dom";
+import { Puzzle, Grid3x3, Swords, ArrowRight } from "lucide-react";
 import CardSwap, { Card } from "../components/CardSwap";
 
 const GAMES = [
   {
     title: "Maze Solver",
-    description: "Watch BFS, DFS, or A* navigate a maze in real time.",
+    desc: "Watch BFS, DFS, or A* navigate a maze in real time.",
     path: "/maze",
-    icon: "🧩",
+    Icon: Puzzle,
     tag: "Pathfinding",
   },
   {
     title: "8-Puzzle",
-    description: "AI solves the classic sliding tile puzzle using A*.",
+    desc: "AI solves the classic sliding tile puzzle using A*.",
     path: "/puzzle",
-    icon: "🔢",
+    Icon: Grid3x3,
     tag: "Heuristic Search",
   },
   {
     title: "Rock Paper Scissors",
-    description: "Play against an AI opponent and see who wins.",
+    desc: "Play against an AI opponent and see who wins.",
     path: "/rps",
-    icon: "✊",
+    Icon: Swords,
     tag: "Game AI",
   },
 ];
 
 export default function Home() {
   return (
-    <div className="h-screen flex flex-col items-center justify-center px-6 pt-20">
-      <div className="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-between gap-12">
-        {/* Left — hero */}
-        <div className="flex-1 flex flex-col items-start gap-5 max-w-xl">
-          <span className="text-xs font-semibold tracking-widest text-purple-400 uppercase bg-purple-500/10 border border-purple-500/25 px-4 py-1.5 rounded-full">
+    <div
+      style={{
+        height: "calc(100vh - 60px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "0 48px",
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1100px",
+          display: "flex",
+          alignItems: "center",
+          gap: "80px",
+        }}
+      >
+        {/* Left */}
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            gap: "22px",
+            minWidth: 0,
+          }}
+        >
+          <span
+            style={{
+              display: "inline-block",
+              width: "fit-content",
+              fontSize: "11px",
+              fontWeight: 600,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              color: "#a78bfa",
+              background: "rgba(139,92,246,0.1)",
+              border: "1px solid rgba(139,92,246,0.25)",
+              padding: "5px 14px",
+              borderRadius: "999px",
+            }}
+          >
             Powered by AI Algorithms
           </span>
-          <h1 className="text-6xl font-bold leading-tight text-white">
+          <h1
+            style={{
+              fontSize: "56px",
+              fontWeight: 700,
+              lineHeight: 1.1,
+              color: "#fff",
+              margin: 0,
+            }}
+          >
             AI Games
             <br />
-            <span className="text-purple-400">Platform</span>
+            <span style={{ color: "#a78bfa" }}>Platform</span>
           </h1>
-          <p className="text-gray-400 text-base leading-relaxed">
+          <p
+            style={{
+              fontSize: "15px",
+              color: "#9ca3af",
+              lineHeight: 1.7,
+              margin: 0,
+              maxWidth: "360px",
+            }}
+          >
             Classic games brought to life with intelligent algorithms —
             pathfinding, heuristic search, and game AI.
           </p>
-          <div className="flex gap-3 mt-1">
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             <Link
               to="/maze"
-              className="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2.5 rounded-full font-medium text-sm transition-all shadow-lg shadow-purple-900/40"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
+                background: "#7c3aed",
+                color: "#fff",
+                padding: "11px 24px",
+                borderRadius: "999px",
+                fontSize: "14px",
+                fontWeight: 500,
+                textDecoration: "none",
+                boxShadow: "0 4px 20px rgba(124,58,237,0.4)",
+              }}
             >
-              Start Playing →
+              Start Playing <ArrowRight size={15} />
             </Link>
             <Link
               to="/rps"
-              className="bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 px-6 py-2.5 rounded-full font-medium text-sm transition-all"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                color: "#d1d5db",
+                border: "1px solid rgba(255,255,255,0.1)",
+                padding: "11px 24px",
+                borderRadius: "999px",
+                fontSize: "14px",
+                fontWeight: 500,
+                textDecoration: "none",
+              }}
             >
               Try RPS
             </Link>
           </div>
-
-          {/* Mini game pills */}
-          <div className="flex gap-2 mt-2 flex-wrap">
-            {GAMES.map((g) => (
+          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+            {GAMES.map(({ title, path, Icon }) => (
               <Link
-                key={g.path}
-                to={g.path}
-                className="flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-purple-500/40 px-4 py-2 rounded-full text-sm text-gray-300 transition-all"
+                key={path}
+                to={path}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  background: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  color: "#d1d5db",
+                  padding: "7px 14px",
+                  borderRadius: "999px",
+                  fontSize: "12px",
+                  textDecoration: "none",
+                }}
               >
-                <span>{g.icon}</span>
-                {g.title}
+                <Icon size={13} /> {title}
               </Link>
             ))}
           </div>
         </div>
 
-        {/* Right — CardSwap */}
+        {/* Right — CardSwap, large like the reference */}
         <div
-          className="flex-1 flex justify-center items-center"
-          style={{ height: "420px", position: "relative" }}
+          style={{
+            flex: "0 0 600px",
+            height: "560px",
+            position: "relative",
+            overflow: "visible",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           <CardSwap
             cardDistance={55}
-            verticalDistance={65}
+            verticalDistance={90}
             delay={4000}
-            pauseOnHover={true}
-            width={300}
-            height={180}
+            pauseOnHover={false}
+            width={500}
+            height={320}
             easing="elastic"
           >
-            {GAMES.map((g) => (
-              <Card key={g.path}>
-                <div className="w-full h-full p-5 flex flex-col justify-between">
-                  <div className="flex items-start justify-between">
-                    <span className="text-3xl">{g.icon}</span>
-                    <span className="text-xs text-purple-400 bg-purple-500/10 border border-purple-500/20 px-3 py-1 rounded-full">
-                      {g.tag}
+            {GAMES.map(({ title, desc, path, Icon, tag }) => (
+              <Card key={path}>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    padding: "28px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    boxSizing: "border-box",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "flex-start",
+                      justifyContent: "space-between",
+                      gap: "12px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "36px",
+                          height: "36px",
+                          borderRadius: "10px",
+                          background: "rgba(124,58,237,0.2)",
+                          border: "1px solid rgba(124,58,237,0.3)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <Icon size={18} color="#a78bfa" />
+                      </div>
+                      <h3
+                        style={{
+                          color: "#fff",
+                          fontWeight: 600,
+                          fontSize: "17px",
+                          margin: 0,
+                        }}
+                      >
+                        {title}
+                      </h3>
+                    </div>
+                    <span
+                      style={{
+                        fontSize: "11px",
+                        color: "#a78bfa",
+                        background: "rgba(139,92,246,0.12)",
+                        border: "1px solid rgba(139,92,246,0.25)",
+                        padding: "4px 12px",
+                        borderRadius: "999px",
+                        whiteSpace: "nowrap",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {tag}
                     </span>
                   </div>
-                  <div>
-                    <h3 className="text-white font-semibold text-base mb-1">
-                      {g.title}
-                    </h3>
-                    <p className="text-gray-400 text-xs leading-relaxed">
-                      {g.description}
-                    </p>
-                  </div>
-                  <Link
-                    to={g.path}
-                    className="text-xs bg-purple-600 hover:bg-purple-500 text-white px-4 py-1.5 rounded-full w-fit transition-colors"
+                  <p
+                    style={{
+                      color: "#9ca3af",
+                      fontSize: "14px",
+                      lineHeight: 1.6,
+                      margin: 0,
+                    }}
                   >
-                    Play →
+                    {desc}
+                  </p>
+                  <Link
+                    to={path}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      background: "#7c3aed",
+                      color: "#fff",
+                      fontSize: "13px",
+                      fontWeight: 500,
+                      padding: "9px 20px",
+                      borderRadius: "999px",
+                      textDecoration: "none",
+                      width: "fit-content",
+                    }}
+                  >
+                    Play <ArrowRight size={13} />
                   </Link>
                 </div>
               </Card>

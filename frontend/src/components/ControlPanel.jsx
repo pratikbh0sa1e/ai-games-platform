@@ -1,17 +1,24 @@
 export default function ControlPanel({ actions = [] }) {
   return (
-    <div className="flex gap-3">
+    <div style={{ display: "flex", gap: "10px" }}>
       {actions.map(({ label, onClick, disabled }, i) => (
         <button
           key={label}
           onClick={onClick}
           disabled={disabled}
-          className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all disabled:opacity-40 disabled:cursor-not-allowed
-            ${
-              i === 0
-                ? "bg-purple-600 hover:bg-purple-500 text-white shadow-md shadow-purple-900/40"
-                : "bg-white/10 hover:bg-white/20 text-gray-300 border border-white/10"
-            }`}
+          style={{
+            padding: "10px 24px",
+            borderRadius: "999px",
+            fontSize: "13px",
+            fontWeight: 500,
+            border: i === 0 ? "none" : "1px solid rgba(255,255,255,0.1)",
+            cursor: disabled ? "not-allowed" : "pointer",
+            opacity: disabled ? 0.4 : 1,
+            transition: "all 0.15s",
+            background: i === 0 ? "#7c3aed" : "rgba(255,255,255,0.08)",
+            color: "#fff",
+            boxShadow: i === 0 ? "0 4px 16px rgba(124,58,237,0.35)" : "none",
+          }}
         >
           {label}
         </button>
