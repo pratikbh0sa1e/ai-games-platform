@@ -155,6 +155,7 @@ export default function MazeSolver() {
       onMouseUp={handleMouseUp}
     >
       <div
+        className="game-card"
         style={{
           background: "rgba(255,255,255,0.09)",
           border: "1px solid rgba(255,255,255,0.14)",
@@ -187,6 +188,7 @@ export default function MazeSolver() {
 
         {/* Toolbar row */}
         <div
+          className="toolbar-wrap"
           style={{
             display: "flex",
             gap: "12px",
@@ -297,8 +299,29 @@ export default function MazeSolver() {
                 return (
                   <div
                     key={c}
+                    className="maze-grid-cell"
                     onMouseDown={() => handleCellDown(r, c)}
                     onMouseEnter={() => handleCellEnter(r, c)}
+                    onTouchStart={(e) => {
+                      e.preventDefault();
+                      handleCellDown(r, c);
+                    }}
+                    onTouchMove={(e) => {
+                      e.preventDefault();
+                      const t = e.touches[0];
+                      const el = document.elementFromPoint(
+                        t.clientX,
+                        t.clientY,
+                      );
+                      if (el?.dataset?.row && el?.dataset?.col) {
+                        handleCellEnter(
+                          Number(el.dataset.row),
+                          Number(el.dataset.col),
+                        );
+                      }
+                    }}
+                    data-row={r}
+                    data-col={c}
                     style={{
                       width: "28px",
                       height: "28px",
@@ -311,6 +334,7 @@ export default function MazeSolver() {
                       boxShadow: isPath
                         ? "0 0 6px rgba(124,58,237,0.4)"
                         : "none",
+                      touchAction: "none",
                     }}
                   />
                 );

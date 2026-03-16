@@ -53,6 +53,7 @@ export default function Home() {
         padding: "0 48px",
         overflow: "hidden",
       }}
+      className="home-layout"
     >
       <div
         style={{
@@ -62,6 +63,7 @@ export default function Home() {
           alignItems: "center",
           gap: "80px",
         }}
+        className="home-layout"
       >
         {/* Left */}
         <div
@@ -91,6 +93,7 @@ export default function Home() {
             Powered by AI Algorithms
           </span>
           <h1
+            className="home-hero-title"
             style={{
               fontSize: "56px",
               fontWeight: 700,
@@ -110,6 +113,7 @@ export default function Home() {
             Algora
           </h1>
           <h2
+            className="home-hero-subtitle"
             style={{
               fontSize: "36px",
               fontWeight: 700,
@@ -193,6 +197,7 @@ export default function Home() {
 
         {/* Right — CardSwap, large like the reference */}
         <div
+          className="home-cardswap-wrap"
           style={{
             flex: "0 0 600px",
             height: "560px",

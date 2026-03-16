@@ -96,6 +96,7 @@ export default function EightPuzzle() {
       }}
     >
       <div
+        className="game-card"
         style={{
           background: "rgba(255,255,255,0.09)",
           border: "1px solid rgba(255,255,255,0.14)",
@@ -163,6 +164,7 @@ export default function EightPuzzle() {
           {board.flat().map((val, i) => (
             <div
               key={i}
+              className="puzzle-tile"
               style={{
                 width: "80px",
                 height: "80px",

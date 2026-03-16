@@ -53,6 +53,7 @@ export default function RockPaperScissors() {
       }}
     >
       <div
+        className="game-card"
         style={{
           background: "rgba(255,255,255,0.09)",
           border: "1px solid rgba(255,255,255,0.14)",
@@ -108,6 +109,7 @@ export default function RockPaperScissors() {
           {CHOICES.map(({ id, Icon, label }) => (
             <button
               key={id}
+              className="rps-btn"
               onClick={() => handlePlay(id)}
               disabled={loading}
               style={{
